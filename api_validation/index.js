@@ -75,7 +75,8 @@ app.post (
     body('type').replace(["js"], "javascript"),
     body("username").toLowerCase(),
     body("extension").default("png"),
-    body('paragraph').trim(),
+    body('username').trim(),  //username urd ardaa zaitai bichij yvuulsan tohiodold zaig ni tseverlej hadgalna
+    body('name').trim(),      // name
     (req, res) =>{
         const data =req.body;
         const errors = validationResult(req);

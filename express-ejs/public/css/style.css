@@ -1,0 +1,15 @@
+.red{
+    color: blue;
+    text-align: center;
+}
+h1{
+    color: red;
+}
+footer{
+   margin-top: 80vh;
+}
+.error{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
