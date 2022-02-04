@@ -6,9 +6,7 @@ const port = 5001
 //     res.send("hello world")
 // })
 
-// food dotor file irj baigaa bolovch sonhronoor duudaad hooson file duudaad baih shig baina promise heregleh ystoi bol uu
-
-food ="";
+let foods ="";
 const request = require("request")
 request("http://52.221.191.153/api/foods", (err,response, body ) => {
     if(err){
@@ -17,14 +15,16 @@ request("http://52.221.191.153/api/foods", (err,response, body ) => {
   let food =JSON.parse(body)
   let hool = food.data
  hool.map(list => {
-    food +=`<h2>${list.name} | ${list.price} | ${list.stock}</h2>`
+    foods +=`<h2>${list.name} | ${list.price} | ${list.stock}</h2>`
  })
  
-  
-}) 
-console.log(food)
+ 
+ console.log(foods)
+}
+) 
+
 app.get("/foods", (req, res) => {
-    res.send("food" + food)
+    res.send("food" + foods)
 })
 
 
