@@ -1,20 +1,22 @@
 
-import React, {useEffect, useState} from "react";
-function app (){
-const [first, setfirst] = useState()
+import React, { useEffect, useState } from "react";
+function App() {
+  const [first, setfirst] = useState()
+  let dName = "";
+  useEffect(() => {
+    fetch("http://localhost:3001/server")
+      .then(response => response.json())
+    // .then(data => setfirst(data))
+  })
+  console.log(first)
 
-useEffect(() => {
-  fetch("http://localhost:3001/server")
-  .then(response => response.json())
-  .then(data => console.log(data))
-})
 
+  return (
+    <div>
+      <p> hi</p>
+      <p></p>
+    </div>
 
-    return(
-        <div>
-        <p> hi</p>
-        </div>
-
-    )
+  )
 }
-export default app;
+export default App;
