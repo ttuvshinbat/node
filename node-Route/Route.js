@@ -1,29 +1,29 @@
 const express = require('express')
-const app =express()
+const app = express()
 const fs = require('fs')
-const port =3000
+const port = 3000
 
-app.get("/users/:userId/", (req, res) =>{
-  let userId = req.params.userId
-    let jsonFile ;
+app.get("/users/:userId/", (req, res) => {
+    let userId = req.params.userId
+    let jsonFile;
     fs.readFile(('./user.json'), (err, data) => {
-        if(err) {
+        if (err) {
             console.error(err)
         }
-       jsonFile= JSON.parse(data.toString())
-      
-       jsonFile.map(data => {
-        if(userId == data.id)  {
-           console.log(data)
-           
-             res.send(data)
-           
-        }else{
-            res.send(data + "bolq bn oo")
-        }
-       })
-   })
-  
+        jsonFile = JSON.parse(data.toString())
+
+        jsonFile.map(data => {
+            if (userId == data.id) {
+                console.log(data)
+
+                res.send(data)
+
+            } else {
+                res.send(data + "bolq bn oo")
+            }
+        })
+    })
+
 })
 
 
@@ -36,6 +36,6 @@ app.get("/users/:userId/", (req, res) =>{
 // })
 
 app.listen(port, () => {
-    console.log(` example app listening at http://localhost:${port}`) 
-    }
+    console.log(` example app listening at http://localhost:${port}`)
+}
 )
