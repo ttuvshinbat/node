@@ -11,4 +11,4 @@
   <li><%=nom[rndInt[i]].description%></li>
   <a><%=nom[rndInt[i]].websiite%></a>
 </ul>
-<%} %>
+<%} %> req.querry.title
