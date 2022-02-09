@@ -14,19 +14,21 @@ app.get("/", (req, res) => {
   res.render("index", { name: "tuvshee" });
 });
 app.get("/quotes", (req, res) => {
-  res.render("quotes", { title: "Quote lists", quotes});
+  res.render("quotes", { title: "Quote lists", quotes });
 });
 app.get("/quote/:id", (req, res) => {
-  res.render("quote", {id: quotes[req.params.id].id+1,
-    quote: quotes[req.params.id].quote, 
-    author:quotes[req.params.id].source });
-    console.log(id)
-  
+  res.render("quote", {
+    id: quotes[req.params.id].id + 1,
+    quote: quotes[req.params.id].quote,
+    author: quotes[req.params.id].source
+  });
+  console.log(id)
+
 });
 app.get("/a", (req, res) => {
-    if(true){
-        res.redirect("/quotes");
-    }
+  if (true) {
+    res.redirect("/quotes");
+  }
 });
 
 

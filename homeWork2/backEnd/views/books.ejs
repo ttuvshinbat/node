@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Номнууд</h1>
+    <a href="">мэдээлэл</a>
+    <% for (var i=0 ; i<nom.length; i++) {%>
+      <ul class="book">
+        <li><%=nom[i].isbn%></li>
+        <li><%=nom[i].title%></li>
+        <li><%=nom[i].subtitle%></li>
+        <li><%=nom[i].author%></li>
+        <li><%=nom[i].published%></li>
+        <li><%=nom[i].publisher%></li>
+        <li><%=nom[i].pages%></li>
+        <li><%=nom[i].description%></li>
+        <a href=""><%=nom[i].website%></a>
+      </ul>
+      <%} %>
+      
+  </body>
+</html>

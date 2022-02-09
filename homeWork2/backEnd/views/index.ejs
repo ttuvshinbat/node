@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <% for (var i=0 ; i<3; i++) {%>
+    <ul class="book">
+      <li><%=nom[rndInt[i]].isbn%></li>
+      <li><%=nom[rndInt[i]].title%></li>
+      <li><%=nom[rndInt[i]].subtitle%></li>
+      <li><%=nom[rndInt[i]].author%></li>
+      <li><%=nom[rndInt[i]].published%></li>
+      <li><%=nom[rndInt[i]].publisher%></li>
+      <li><%=nom[rndInt[i]].pages%></li>
+      <li><%=nom[rndInt[i]].description%></li>
+      <a href=""><%=nom[rndInt[i]].website%></a>
+    </ul>
+    <%} %>
+  </body>
+</html>

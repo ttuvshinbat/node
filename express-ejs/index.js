@@ -9,7 +9,7 @@ app.use(express.static("public"))
 app.use("/api", apiRoutes)
 app.use("/", adminRoutes)
 
-const port = 3001
-app.listen(port,()=>{
+const port = 3003
+app.listen(port, () => {
   console.log(`Server is running on ${port}`)
 });
