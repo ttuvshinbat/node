@@ -55,9 +55,10 @@ app.post("/add", body("isbn").isNumeric().isLength({ min: 12, max: 13 }),
 
     (req, res) => {
         console.log(req.body)
+        const data = req.body
         date = new Date(Date.now())
         fs.appendFile("book_add.json",
-            "\nisbn" + body("isbn") + "date" + date.toString(),
+            "\nisbn " + data.isbn + " date " + date.toString(),
             () => { }
         )
 
