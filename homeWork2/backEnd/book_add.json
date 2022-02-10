@@ -1,0 +1,28 @@
+
+isbnasync (req, _res, next) => {
+        try {
+            await runner.run(req);
+            next();
+        }
+        catch (e) {
+            next(e);
+        }
+    }dateThu Feb 10 2022 23:37:33 GMT+0800 (Ulaanbaatar Standard Time)
+isbnasync (req, _res, next) => {
+        try {
+            await runner.run(req);
+            next();
+        }
+        catch (e) {
+            next(e);
+        }
+    }dateThu Feb 10 2022 23:38:25 GMT+0800 (Ulaanbaatar Standard Time)
+isbnasync (req, _res, next) => {
+        try {
+            await runner.run(req);
+            next();
+        }
+        catch (e) {
+            next(e);
+        }
+    }dateThu Feb 10 2022 23:38:31 GMT+0800 (Ulaanbaatar Standard Time)

@@ -33,6 +33,8 @@ app.get("/profile", cors(corsOption), (req, res) => {
 app.get("/email", cors(corsOption), (req, res) => {
     res.send(jsonFile.email)
 })
+data.title.toLowerCase().includes(title.toLowerCase())
+
 router.get("/userid/id", function (req, res, next) {
     const id = req.params.id
     if (id < 10) {

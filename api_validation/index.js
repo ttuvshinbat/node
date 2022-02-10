@@ -5,7 +5,7 @@ const fs = require("fs");
 const port = 3001;
 app.use(express.static('public'))
 app.use(express.json())
-const {body, validationResult} = require("express-validator")
+const { body, validationResult } = require("express-validator")
 // const regName = /[a-zA-Z]/
 // const regEmail = /[a-zA-Z0-9_.@]/
 // const regNumber = /^[\d]{8,11}$/
@@ -23,9 +23,9 @@ const {body, validationResult} = require("express-validator")
 //         res.send("shaardlaga hangahgui baina")
 //     }
 
-   
+
 //    })
-  
+
 // app.listen(port, ()=> {
 //     console.log(`listening at http://localhost:${port}`)
 // })
@@ -33,32 +33,28 @@ const {body, validationResult} = require("express-validator")
 
 //2  express validation
 app.post("/register", body("name").notEmpty(),
-body("email").isEmail().custom((value) => {
-    if(!value.includes('@mstars')) throw new Error("email dotor mstars zaaval baih ystoi")
-    return true; //else tohioldold match hiichij bolno gej uzjiin
-}),
-body("phone").isNumeric().isLength({min: 8, max:14}),
-body("password").isStrongPassword(),
-body('age').isNumeric(),
-
-
-
-
-(req, res) =>{
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({errors: errors.array()})
-    }else{
-        res.json({
-            succes : true
-        })
-    }
-})
+    body("email").isEmail().custom((value) => {
+        if (!value.includes('@mstars')) throw new Error("email dotor mstars zaaval baih ystoi")
+        return true; //else tohioldold match hiichij bolno gej uzjiin
+    }),
+    body("phone").isNumeric().isLength({ min: 8, max: 14 }),
+    body("password").isStrongPassword(),
+    body('age').isNumeric(),
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        } else {
+            res.json({
+                succes: true
+            })
+        }
+    })
 
 app.post("/register/test", (req, res) => {
-    const data =req.body;
+    const data = req.body;
     res.json({
-        "succes" : true,
+        "succes": true,
         "data ": data,
         "message": "successfully recieved data!",
         "bolj baina": "za za boljiin"
@@ -67,30 +63,29 @@ app.post("/register/test", (req, res) => {
     email = data.email;
     password = data.password;
     number = data.number;
- 
-   })
-  //3 sanitize
-app.post (
+
+})
+//3 sanitize
+app.post(
     "/sanitize",
     body('type').replace(["js"], "javascript"),
     body("username").toLowerCase(),
     body("extension").default("png"),
     body('username').trim(),  //username urd ardaa zaitai bichij yvuulsan tohiodold zaig ni tseverlej hadgalna
     body('name').trim(),      // name
-    (req, res) =>{
-        const data =req.body;
+    (req, res) => {
+        const data = req.body;
         const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.status(400).json({errors: errors.array()})
-        }else{
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        } else {
             res.json({
-                succes : true,
-                data : data
+                succes: true,
+                data: data
             })
         }
     })
 
-app.listen(port, ()=> {
+app.listen(port, () => {
     console.log(`listening at http://localhost:${port}`)
 })
-

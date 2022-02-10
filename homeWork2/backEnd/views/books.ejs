@@ -1,28 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Номнууд</h1>
-    <a href="">мэдээлэл</a>
-    <% for (var i=0 ; i<nom.length; i++) {%>
-      <ul class="book">
-        <li><%=nom[i].isbn%></li>
-        <li><%=nom[i].title%></li>
-        <li><%=nom[i].subtitle%></li>
-        <li><%=nom[i].author%></li>
-        <li><%=nom[i].published%></li>
-        <li><%=nom[i].publisher%></li>
-        <li><%=nom[i].pages%></li>
-        <li><%=nom[i].description%></li>
-        <a href=""><%=nom[i].website%></a>
-      </ul>
-      <%} %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Номнууд</h1>
+  <a href="">book add</a>
+  <form>
+    <div class="forumN">
+      <label for="isbn" class="added">isbn</label>
+      <input class="added" id="isbn" type="number" name="isbn" />
+    </div>
+    <div class="forumN">
+      <label for="title" class="added">title</label>
+      <input class="added" id="title" type="text" name="title" />
+    </div>
+    <div class="forumN">
+      <label for="subtitle" class="added">subtitle</label>
+      <input class="added" type="text" id="subtitle" name="subtitle" />
+    </div>
+    <div class="forumN">
+      <label for="author" class="added">author</label>
+      <input class="added" id="author" type="text" name="author" />
+    </div>
+    <div class="forumN">
+      <label for="published" class="added">published</label>
+      <input class="added" type="text" id="published" name="published" />
+    </div>
+    <div class="forumN">
+      <label for="publisher" class="added">publisher</label>
+      <input class="added" type="text" id="publisher" name="publisher" />
+    </div>
+    <div class="forumN">
+      <label for="pages" class="added">pages</label>
+      <input class="added" id="pages" type="text" name="pages" />
+    </div>
+    <div class="forumN">
+      <label for="description" class="added">description</label>
+      <input class="added" type="text" id="description" name="description" />
+    </div>
+    <div class="forumN">
+      <label for="website" class="added">website</label>
+      <input class="added" type="text" id="website" name="website" />
+    </div>
+    <label for="submitB"></label>
+    <input id="submitB" type="submit" />
+  </form>
+  <% for (var i=0 ; i<nom.length; i++) {%>
+  <ul class="book">
+    <li>
+      <%=nom[i].isbn%>
+    </li>
+    <li>
+      <%=nom[i].title%>
+    </li>
+    <li>
+      <%=nom[i].subtitle%>
+    </li>
+    <li>
+      <%=nom[i].author%>
+    </li>
+    <li>
+      <%=nom[i].published%>
+    </li>
+    <li>
+      <%=nom[i].publisher%>
+    </li>
+    <li>
+      <%=nom[i].pages%>
+    </li>
+    <li>
+      <%=nom[i].description%>
+    </li>
+    <a href="">
+      <%=nom[i].website%>
+    </a>
+  </ul>
+  <%} %>
+  <script>
+    document.getElementById("submitB")
+      .addEventListener("click", (e) => {
+        e.preventDefault()
+        const isbn = document.getElementById("isbn").value
+        const title = document.getElementById("title").value
+        const subtitle = document.getElementById("subtitle").value
+        const author = document.getElementById("author").value
+        const published = document.getElementById("published").value
+        const publisher = document.getElementById("publisher").value
+        const pages = document.getElementById("pages").value
+        const description = document.getElementById("description").value
+        const website = document.getElementById("website").value
+
+        console.log(isbn)
       
-  </body>
+        fetch("http://localhost:3004/api/add", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              isbn: isbn,
+              title: title,
+              subtitle: subtitle,
+              author: author,
+              published: published,
+              publisher: publisher,
+              pages: pages,
+              description: description,
+              website: website,
+            }),
+          }).then((res) => {
+          console.log(res)
+          })
+          
+
+      })
+  </script>
+</body>
+
 </html>
