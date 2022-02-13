@@ -84,9 +84,16 @@ app.get("/minpages", (req, res) => {
 })
 app.get("/search", (req, res) => {
     const title = req.query.title.replace(/['"]+/g, "")
+
     res.send(
+
         nom.filter((data) => {
-            data.title.toLowerCase().includes(title.toLowerCase())
+            console.log(title)
+
+            const garchig = data.title.toLowerCase().includes(title.toLowerCase());
+            console.log(garchig)
+            return garchig
+
         }))
 })
 
