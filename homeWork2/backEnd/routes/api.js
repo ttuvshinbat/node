@@ -2,7 +2,7 @@ const express = require("express")
 const res = require("express/lib/response")
 const { handle } = require("express/lib/router")
 const path = require("path")
-const app = express()
+const router = express.Router()
 const books = require("../book.json")
 const fs = require("fs")
 const { body, validationResult } = require("express-validator")
@@ -21,24 +21,19 @@ function randomIntFromInterval(min, max, count) {
 }
 const rndInt = randomIntFromInterval(1, 8, 3)
 
-
-app.set("view engine", "ejs")
-app.set("views", path.join(__dirname, "../views"))
-app.set("view option", { layout: false })
-
-app.get("/", (req, res) => {
-    res.render("index", { nom: books.books, rndInt: rndInt, })
+router.get("/", (req, res) => {
+    res.send(  nom[rndInt] )
 })
-app.get("/books",
+router.get("/books",
 
     (req, res) => {
         res.render("books", { nom: books.books })
 
     })
-app.get("/author", (req, res) => {
+router.get("/author", (req, res) => {
     res.render("author", { nom: books.books })
 })
-app.get("/book/:isbn_id", (req, res) => {
+router.get("/book/:isbn_id", (req, res) => {
     let isbn = req.params.isbn_id
     nom.filter(data => {
         if (isbn == data.isbn) {
@@ -46,7 +41,7 @@ app.get("/book/:isbn_id", (req, res) => {
         }
     })
 })
-app.use("/add", body("isbn").isNumeric().isLength({ min: 12, max: 13 }),
+router.post("/add", body("isbn").isNumeric().isLength({ min: 12, max: 13 }),
     body("title").isEmpty(),
     body("subtitle").notEmpty(),
     body("author").notEmpty(),
@@ -56,33 +51,33 @@ app.use("/add", body("isbn").isNumeric().isLength({ min: 12, max: 13 }),
     body("description").notEmpty(),
     body("website").notEmpty(),
 
-    (req, res) => {
+    (req, res,next) => {
         const errors = validationResult(req)
         console.log(req.body)
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
-        } else (res.send("data"))
-
-        const data = req.body
-        date = new Date(Date.now())
-        fs.appendFile("book_add.json",
-            "\nisbn " + data.isbn + " date " + date.toString(),
-            () => { }
-        )
-
+        } next(),
+        (req,res,next)=>{
+            const data = req.body
+            date = new Date(Date.now())
+            fs.routerendFile("book_add.json",
+                "\nisbn " + data.isbn + " date " + date.toString(),
+                () => { }
+            )
+        }
 
     })
-app.get("/maxpages", (req, res) => {
+router.get("/maxpages", (req, res) => {
     let max = Math.max(...nom.map(({ pages }) => pages))
     let result = nom.filter(({ pages }) => pages === max)
     res.send(result)
 })
-app.get("/minpages", (req, res) => {
+router.get("/minpages", (req, res) => {
     let min = Math.min(...nom.map(({ pages }) => pages))
     let result = nom.filter(({ pages }) => pages === min)
     res.send(result)
 })
-app.get("/search", (req, res) => {
+router.get("/search", (req, res) => {
     const title = req.query.title.replace(/['"]+/g, "")
 
     res.send(
@@ -99,4 +94,4 @@ app.get("/search", (req, res) => {
 
 console.log(rndInt)
 
-module.exports = app;
+module.exports = router;
