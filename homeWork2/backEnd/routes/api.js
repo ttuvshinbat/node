@@ -21,18 +21,11 @@ function randomIntFromInterval(min, max, count) {
 }
 const rndInt = randomIntFromInterval(1, 8, 3)
 
-router.get("/", (req, res) => {
-    res.send(  nom[rndInt] )
-})
-router.get("/books",
 
-    (req, res) => {
-        res.render("books", { nom: books.books })
-
+router.get("/books", (req, res) => {
+        res.json(books);
     })
-router.get("/author", (req, res) => {
-    res.render("author", { nom: books.books })
-})
+
 router.get("/book/:isbn_id", (req, res) => {
     let isbn = req.params.isbn_id
     nom.filter(data => {
@@ -42,7 +35,7 @@ router.get("/book/:isbn_id", (req, res) => {
     })
 })
 router.post("/add", body("isbn").isNumeric().isLength({ min: 12, max: 13 }),
-    body("title").isEmpty(),
+    body("title").notEmpty(),
     body("subtitle").notEmpty(),
     body("author").notEmpty(),
     body("published").notEmpty(),
@@ -56,16 +49,15 @@ router.post("/add", body("isbn").isNumeric().isLength({ min: 12, max: 13 }),
         console.log(req.body)
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() })
-        } next(),
-        (req,res,next)=>{
+        }
+       
             const data = req.body
             date = new Date(Date.now())
-            fs.routerendFile("book_add.json",
+            fs.appendFile("book_add.json",
                 "\nisbn " + data.isbn + " date " + date.toString(),
                 () => { }
             )
-        }
-
+        
     })
 router.get("/maxpages", (req, res) => {
     let max = Math.max(...nom.map(({ pages }) => pages))
@@ -92,6 +84,5 @@ router.get("/search", (req, res) => {
         }))
 })
 
-console.log(rndInt)
 
 module.exports = router;

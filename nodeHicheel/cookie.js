@@ -3,7 +3,7 @@ var url = require("url")
 http.createServer(function(request, response){
     var cookies = request.headers.cookie
     if(!cookies){
-        let a = "Angarag"
+        let a = "tuvshee"
         response.setHeader("Set-cookie", a)
         console.log("cookie text nemlee")
         return response.end();
