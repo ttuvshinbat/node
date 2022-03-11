@@ -1,8 +1,9 @@
 const {body, validationResult} = require('express-validator');
+
 const createfood = () => {
     return [
-        body('name').not().isEmpty(),
-        body('price').not().isEmpty().withMessage('price is empty'),
+        body('name').notEmpty(),
+        body('price').notEmpty().withMessage('price is empty'),
         body('discount').isNumeric().isLength({min: 0, max:100}),
         body('stock').notEmpty().isLength({min:1}),
        body('recipe').notEmpty(),

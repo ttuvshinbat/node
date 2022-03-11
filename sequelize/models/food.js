@@ -1,5 +1,7 @@
 const {Sequelize, DataTypes} = require('@sequelize/core');
+const { category_update } = require('../controller/categoryController');
 const sequelize = require('../database')
+const Category = require('../models/food_category')
 const Food = sequelize.define("food", {
     name: {
         type: DataTypes.STRING,
@@ -20,14 +22,16 @@ const Food = sequelize.define("food", {
     recipe : {
         type : DataTypes.STRING
     },
-   categoryId : {
+   foodCategoryId : {
        type : DataTypes.INTEGER
    }
    
 },{
     timestamps : false
 })
+Category.hasMany(Food);
+Food.belongsTo(Category);
 async () => {
-    await Food.sync({alter: thue});
+    await Food.sync({alter: true});
 }
 module.exports =Food;
