@@ -30,9 +30,7 @@ const Food = sequelize.define("food", {
    foodCategoryId : {
        type : DataTypes.INTEGER,
        allowNull: false
-   }
-   
-},{
+   }},{
     timestamps : false
 })
 Category.hasMany(Food);
