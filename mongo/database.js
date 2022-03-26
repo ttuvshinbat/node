@@ -1,16 +1,9 @@
-// const {Sequelize} = require('sequelize')
-// const username = process.env.DATABASE_NAME;
-// const password = process.env.DATABASE_PASSWORD;
-// const sequelize = new Sequelize ('food_delivery', username, password, {
-//     host: 'localhost',
-//     dialect : 'mysql',
-//     logging : false
-// })
-// sequelize.authenticate()
-// .then(() => {
-//     console.log(' connection success');
-// })
-// .catch(err => {
-//     console.error('unable to connect to the databases :', err)
-// })
-// module.exports = sequelize;
+const mongoose = require("mongoose");
+
+mongoose
+  .connect(process.env.ATLAS_CONNECTION_URL, { useNewUrlParser: true })
+  .then(() => console.log(`Database connected successfully`))
+  .catch((err) => console.log(err));
+
+mongoose.Promise = global.Promise;
+module.exports = mongoose;

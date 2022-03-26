@@ -1,41 +1,65 @@
-const {Sequelize, DataTypes} = require('@sequelize/core');
-const { category_update } = require('../controller/categoryController');
-const sequelize = require('../database')
-const Category = require('../models/food_category')
-const Food = sequelize.define("food", {
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+
+const FoodSchema = new Schema({
+  name: {
+    type: String,
+    required: [true, "Oh Come on! Food name is must!"],
+  },
+  price: {
+    type: Number,
+    minimum: 0,
+  },
+  discount: {
+    type: Number,
+    minimum: 0,
+    default: 0,
+  },
+  portion: {
+    type: Number,
+    minimum: 1,
+  },
+  stock: {
+    type: Number,
+    minimum: 0,
+  },
+  ingredients: {
+    type: String,
+  },
+  status: {
+    type: String,
+  },
+  sales: {
+    type: Boolean,
+    default: false,
+  },
+  image: {
+    type: String,
+  },
+  tumb_img: {
+    type: String,
+  },
+  category: {
     name: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: String,
     },
-    price : {
-        type: DataTypes.INTEGER,
-        allowNull: false
+    color: {
+      type: String,
     },
-    portion :{
-        type : DataTypes.INTEGER,
-        allowNull: false
-    },
-    stock : {
-        type : DataTypes.INTEGER,
-        allowNull: false
-    },
-    discount : {
-        type : DataTypes.INTEGER,
-        allowNull: false
-    },
-    recipe : {
-        type : DataTypes.STRING,
-        allowNull: false
-    },
-   foodCategoryId : {
-       type : DataTypes.INTEGER,
-       allowNull: false
-   }},{
-    timestamps : false
-})
-Category.hasMany(Food);
-Food.belongsTo(Category);
-async () => {
-    await Food.sync({alter: true});
-}
-module.exports =Food;
+  },
+});
+
+const Food = mongoose.model("food", FoodSchema);
+
+module.exports = Food;
+
+// category_id: {
+//   type: String,
+// },
+
+// yag object ID baidlaar normalized holbolt hiisen tohioldold
+
+// category_id:[{
+//   type: Schema.Types.ObjectId,
+//   ref: 'food_category'
+// }],
