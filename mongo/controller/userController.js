@@ -14,7 +14,7 @@ function create_users(req, res) {
   } else {
     const data = req.body;
     User.create(data, function (err, data) {
-      if (err) res.json({ success: false, data: error });
+      if (err) res.json({ success: false, data: err });
       else res.json({ success: true, data: data });
     });
   }
@@ -23,13 +23,59 @@ function updateUser(req, res) {
   const data = req.body;
   const id = req.param.id;
   User.updateOne({ _id: id }, data, function (err, data) {
-    if (err) res.json({ success: false, data: error });
+    if (err) res.json({ success: false, data: err });
     else res.json({ success: true, data: data });
   });
+}
+function user(req, res) {
+  const data = req.body;
+  const id = req.param.id;
+  User.find({ _id: id }, data, function (err, data) {
+    if (err) res.json({ success: false, data: err });
+    else res.json({ success: true, data: data });
+  });
+}
+function delete_user(req, res) {
+  const data = req.body;
+  const id = req.param.id;
+
+  User.deleteOne({ _id: id }, data, function (err, data) {
+    if (err) res.json({ success: false, data: err });
+    else res.json({ success: true, data: data });
+  })
+}
+function search(req, res) {
+  let utas = 0
+  const search = req.query.name
+  let phone = req.query.phone
+  if (phone) {
+    utas = phone
+    console.log(utas)
+  } else {
+    console.log("bolq baina oo")
+  }
+  console.log(req.query.name)
+
+
+  User.find({
+    $or: [{ name: search },
+    { email: search },
+    { address: search },
+    { phone: parseInt(utas) },
+    { role_id: parseInt(utas) }
+    ]
+  }, function (err, data) {
+    if (err) res.json({ success: false, data: err });
+    else res.json({ success: true, data: data });
+  })
+
 }
 
 module.exports = {
   get_users,
+  user,
   create_users,
   updateUser,
+  search,
+  delete_user
 };

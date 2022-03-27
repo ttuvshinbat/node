@@ -366,3 +366,4 @@ db.foods.insertOne({
   ingredients: "Тахианы гуяны мах, будааны гоймон, тахианы шөл",
   category: "Үндсэн хоол",
 });
+db.users.find({ $or: [{ name: search }, { phone: search }, { email: search }, { address: search }] })
