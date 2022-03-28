@@ -1,0 +1,178 @@
+ [
+        {
+            "price": 6800,
+            "sales": true,
+            "img": "../img/breakfast.png",
+            "name": "Өглөөний хоол",
+            "discountPrice": "",
+            "discountPercentage": 20,
+            "stock": "",
+            "category": "үндсэн хоол хямдралтай",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": true,
+            "img": "../img/icecream.png",
+            "name": "Зайрмаг",
+            "discountPrice": "",
+            "discountPercentage": 30,
+            "stock": "",
+            "category": "амттан хямдралтай",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": true,
+            "img": "../img/pancake.png",
+            "name": "Панкейк",
+            "discountPrice": "",
+            "discountPercentage": 20,
+            "stock": "",
+            "category": "амттан хямдралтай",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": false,
+            "img": "../img/macaron.png",
+            "name": "Макарон",
+            "discountPrice": "",
+            "discountPercentage": 20,
+            "stock": "",
+            "category": "амттан",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": true,
+            "img": "../img/banana_sandwich.png",
+            "name": "Банана сэндвич",
+            "discountPrice": "",
+            "discountPercentage":20,
+            "stock": false,
+            "category": "амттан хямдралтай",
+            "portion": "1"
+        },
+        {
+            "price": 14800,
+            "sales": false,
+            "img": "../img/meatball.png",
+            "name": "Бөөрөнхий мах",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "үндсэн хоол",
+            "portion": "1"
+        },
+        {
+            "price": 11800,
+            "sales": false,
+            "img": "../img/salmon.png",
+            "name": "Салмон загас",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "үндсэн хоол",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": false,
+            "img": "../img/detox_salad.png",
+            "name": "Детокс салат",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "салад ба зууш",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": false,
+            "img": "../img/cobb_salad.png",
+            "name": "Кобб салад",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "салад ба зууш",
+            "portion": "2"
+        },
+        {
+            "price": 6800,
+            "sales": false,
+            "img": "../img/avocado_salad.png",
+            "name": "Авокадо салад",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "салад ба зууш",
+            "portion": "2"
+        },
+        {
+            "price": 4800,
+            "sales": false,
+            "img": "../img/sandwich.png",
+            "name": "Сендвич",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "салад ба зууш",
+            "portion": "2"
+        },
+        {
+            "price": 5800,
+            "sales": false,
+            "img": "../img/donuts.png",
+            "name": "Донатс",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "амттан",
+            "portion": "1"
+        },
+        {
+            "price": 7800,
+            "sales": false,
+            "img": "../img/oreo_dessert.png",
+            "name": "Орео дессерт",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "амттан",
+            "portion": "1"
+        },
+        {
+            "price": 5800,
+            "sales": false,
+            "img": "../img/waffle.png",
+            "name": "Вафли",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "амттан",
+            "portion": "1"
+        },
+        {
+            "price": 6800,
+            "sales": false,
+            "img": "../img/pumpkin_soup.png",
+            "name": "Хулууны зутан",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "үндсэн хоол",
+            "portion": "1"
+        },
+        {
+            "price": 24000,
+            "sales": false,
+            "img": "../img/italian_pizza.png",
+            "name": "Итали пицца",
+            "discountPrice": "",
+            "discountPercentage": "",
+            "stock": "",
+            "category": "үндсэн хоол",
+            "portion": "3"
+        }
+    ]

@@ -356,3 +356,4 @@ db.order.aggregate([
 db.foods.insertOne({
 c
 });
+db.users.find({ $or: [{ name: search }, { phone: search }, { email: search }, { address: search }] })
