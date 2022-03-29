@@ -42,7 +42,46 @@ const register = async (req, res, next) => {
     return res.json({ error: "the inpud field is empthy" });
   }
 };
+const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    if (!(email && password)) {
+      return res
+        .status(400)
+        .json({ success: false, status: "utga buren oruulna u" });
+    } else {
+      const user = await Users.findOne({ email });
+      if (user && (await bcrypt.compare(password, user.password))) {
+        const token = jwt.sign(
+          {
+            user_id: user._id,
+            email,
+          },
+          process.env.TOKEN_KEY,
+          { expiresIn: "2h" }
+        );
+        res.status(200).json({
+          success: true,
+          status: "amjilttai nevterlee",
+          data: user,
+          token: token,
+        });
+        return;
+      } else {
+        res.status(400).json({
+          success: false,
+          status: "nuuts ug ner hoorondoo tarahgui baina",
+        });
+        return;
+      }
+    }
+  } catch (err) {
+    return res.json({ succes: false, message: err });
+  }
+};
 
 module.exports = {
   register,
+  login,
 };
