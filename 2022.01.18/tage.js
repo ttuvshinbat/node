@@ -354,16 +354,6 @@ db.order.aggregate([
   { $sort: { "reserve.ordered_date": 1 } },
 ]);
 db.foods.insertOne({
-  discount: 0,
-  sales: false,
-  category_id: "623d3031b2ebb626329d4cb4",
-  name: "Гахайн мах",
-  price: 10800,
-  portion: 1,
-  stock: 10,
-  image: "/food/chicken_ramen.png",
-  tumb_img: "3_tumb.png",
-  ingredients: "Тахианы гуяны мах, будааны гоймон, тахианы шөл",
-  category: "Үндсэн хоол",
+c
 });
 db.users.find({ $or: [{ name: search }, { phone: search }, { email: search }, { address: search }] })

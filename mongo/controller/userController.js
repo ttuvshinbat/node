@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+const { default: mongoose } = require("mongoose");
 const User = require("../models/user");
 
 function get_users(req, res) {
@@ -42,33 +43,37 @@ function delete_user(req, res) {
   User.deleteOne({ _id: id }, data, function (err, data) {
     if (err) res.json({ success: false, data: err });
     else res.json({ success: true, data: data });
-  })
+  });
 }
-function search(req, res) {
-  let utas = 0
-  const search = req.query.name
-  let phone = req.query.phone
+function user_search(req, res) {
+  let utas = 0;
+  const search = req.query.name;
+  let phone = req.query.phone;
+  var id = mongoose.Types.ObjectId(req.query.id);
   if (phone) {
-    utas = phone
-    console.log(utas)
+    utas = phone;
+    console.log(utas);
   } else {
-    console.log("bolq baina oo")
+    console.log("bolq baina oo");
   }
-  console.log(req.query.name)
+  console.log(req.query.name);
 
-
-  User.find({
-    $or: [{ name: search },
-    { email: search },
-    { address: search },
-    { phone: parseInt(utas) },
-    { role_id: parseInt(utas) }
-    ]
-  }, function (err, data) {
-    if (err) res.json({ success: false, data: err });
-    else res.json({ success: true, data: data });
-  })
-
+  User.find(
+    {
+      $or: [
+        { name: search },
+        { _id: id },
+        { email: search },
+        { address: search },
+        { phone: parseInt(utas) },
+        { role_id: parseInt(utas) },
+      ],
+    },
+    function (err, data) {
+      if (err) res.json({ success: false, data: err });
+      else res.json({ success: true, data: data });
+    }
+  );
 }
 
 module.exports = {
@@ -76,6 +81,6 @@ module.exports = {
   user,
   create_users,
   updateUser,
-  search,
-  delete_user
+  user_search,
+  delete_user,
 };
